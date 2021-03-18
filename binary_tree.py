@@ -33,3 +33,21 @@ class Solution:
             result.append(root.val)
         result = []
         return result
+    def levelorderTravel(self,root):
+        #层序遍历，循环，广度优先搜索
+        if not root:
+            return []
+        ret = []
+        level = [root]
+        while level:
+            current = []
+            next_level = []
+            for l in level:
+                current.append(l.val)
+                if l.left:
+                    next_level.append(l.left)
+                if l.right:
+                    next_level.append(l.right)
+            ret.append(current)
+            level = next_level
+        return ret
